@@ -1,0 +1,274 @@
+
+.App-header {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  bottom:85%;
+  width: 100%;
+  top:0%;
+  position:absolute;
+}
+.App-header-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 使用transform来实现精确的居中 */
+  width: 100%; /* 确保它可以填满.App-header的宽度 */
+}
+
+.chat-window {
+  margin: 0px 0px 0px 0px;
+  padding: 20px;
+  position:absolute;
+  top:15%;
+  bottom:13%;
+  left:0;
+  right:0;
+  background-color: azure;
+  overflow-y: auto; /* 允许在必要时内部滚动 */
+}
+.message {
+  display: flex;
+  align-items: flex-end; /* 调整为 flex-end 以便头像和气泡底部对齐 */
+  margin-bottom: 10px;
+  position: relative; /* 添加相对定位 */
+}
+.chat-window::-webkit-scrollbar {
+  width: 20px; /* 滚动条的宽度 */
+
+}
+
+/* 滚动条滑块的样式 */
+.chat-window::-webkit-scrollbar-thumb {
+  background-color: #02638a; /* 滑块的背景颜色 */
+  border-radius: 5px; /* 滑块的圆角 */
+}
+
+/* 滚动条轨道的样式 */
+.chat-window::-webkit-scrollbar-track {
+  background-color: #e5e5ea; /* 轨道的背景颜色 */
+  border-radius: 5px; /* 轨道的圆角 */
+}
+.message-text {
+  padding: 5px 15px 5px 15px; /* 内边距为气泡提供空间 */
+  border-radius: 10px; /* 圆角 */
+  max-width: 80%; /* 最大宽度限制 */
+  word-wrap: break-word; /* 文本换行 */
+  width: auto; /* 宽度根据内容自动调整 */
+  font-size: 18px;
+}
+.bot-text {
+  background-color: #e5e5ea; /* 机器人气泡颜色 */
+}
+
+.user-text {
+  background-color: #007aff; /* 用户气泡颜色 */
+}
+
+.timestamp {
+  position: absolute;
+  font-size: 0.79em; /* 调整时间戳的字体大小 */
+  white-space: nowrap; /* 防止时间戳文本折行 */
+  
+}
+
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+}
+.message.bot .avatar {
+  left: 0; /* 机器人头像靠左 */
+  margin-right: 16px;
+  margin-top:0px;
+}
+
+.message.user .avatar {
+  right:0 ; /* 用户头像靠右 */
+  margin-left:16px;
+}
+
+.message.bot {
+  flex-direction: row;
+  background-color: transparent; /* 背景色透明 */
+  align-items: flex-start; /* 机器人消息靠左对齐 */
+  padding: 10px 660px 20px 10px;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+  align-items: flex-end; 
+  background-color: transparent; /* 背景色透明 */
+  padding: 10px 20px 20px 660px;
+}
+
+.message.bot::before, .message.user::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 10px;
+  border-radius: 10px;
+  z-index: -1;
+  
+} 
+
+.message.bot::before {
+  right: 100%;
+
+}
+
+.message.user::before {
+  left: 100%;
+
+}
+
+
+.message.bot .timestamp {
+  left: 0.5%; /* 根据头像的位置调整 */
+  bottom: 96%; /* 将时间戳放置在消息气泡顶部 */
+  margin-bottom: 0px; /* 在时间戳和消息气泡之间留出一些空间 */
+}
+
+.message.user .timestamp {
+  right: 1.1%; /* 根据头像的位置调整 */
+  bottom:  98%; /* 将时间戳放置在消息气泡顶部 */
+  margin-bottom: 0px; /* 在时间戳和消息气泡之间留出一些空间 */
+}
+
+
+button {
+  margin-top: 20px;
+}
+.input-area {
+ display: flex;
+  align-items: center; /* 垂直居中输入框和按钮 */
+  padding: 5px;
+    position: absolute;
+    bottom: 5%;
+    left: 0%;
+    right: 0%;
+    top:85%;
+    width: 99%;
+    background-color: azure;
+  
+}
+
+.input-area input {
+  flex-grow: 1; /* 输入框占满剩余空间 */
+  padding: 10px;
+  border-radius: 20px; /* 轻微圆角 */
+  border: 5px solid #ccc; /* 边框样式 */
+  font-size: 20px; /* 设置输入文本的大小 */
+  height: 60%;
+
+}
+
+.input-area button {
+  position: absolute;
+  right: 1%; /* 在输入框内部的右侧定位按钮 */
+  height: 65%;
+  bottom:17%;
+  border: none;
+  background-color: rgb(12, 134, 190); /* 按钮背景颜色 */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px; /* 圆形按钮 */
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+  outline: none; /* 移除焦点时的轮廓 */
+  font-size: 22px;
+}
+
+.input-area button:hover {
+  background-color: #023974; /* 鼠标悬停时的背景颜色变化 */
+}
+
+.input-area input:hover {
+  border: 4px solid #00000096; 
+}
+
+/* 设置输入框获得焦点时的边框颜色 */
+.input-area input:focus {
+  border: 4px solid rgb(12, 134, 190); 
+  outline: none; /* 可选：移除默认的焦点轮廓线 */
+}
+
+/* 底部导航样式 */
+.App-footer {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  width: 100%;
+  bottom: 0%;
+  position:absolute;
+  width: 100%;
+  top:95%;
+}
+
+.App-footer a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* 确保图片显示为圆形 */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 为 options 类添加样式 */
+.options {
+  margin: 0; 
+  padding: 0; 
+}
+
+
+/* 正常状态下的问题文本样式 */
+.question {
+  cursor: pointer; /* 显示可点击的鼠标指针 */
+  color: #000000; /* 默认颜色，根据您的设计调整 */
+  text-decoration: none; /* 移除下划线 */
+  font-size: 18px;
+  border: none;
+  background: none;
+}
+
+/* 鼠标悬停时的问题文本样式 */
+.question:hover {
+  color: #0000FF; /* 鼠标悬停时的颜色，通常是蓝色 */
+  text-decoration: underline; /* 添加下划线 */
+}
+
+.start-choices {
+  background: none;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 18px;
+  cursor: pointer; /* 显示可点击的鼠标指针 */
+  color: #000000; /* 默认颜色，根据您的设计调整 */
+  text-decoration: none; /* 移除下划线 */
+}
+
+.start-choices:hover {
+  color: #0000FF; /* 鼠标悬停时的颜色，通常是蓝色 */
+  text-decoration: underline; /* 添加下划线 */
+}
+
+/* 可能还需要一些样式来调整按钮之间的间隔等 */
+.options {
+  margin-top: 0; /* 去除顶部外边距 */
+  padding-top: 0; /* 去除顶部内边距 */
+}
+
+.start-choices::before {
+  content: '\f0da'; /* Font Awesome的箭头图标 */
+  font-family: 'Font Awesome 5 Free'; /* 设置字体为Font Awesome */
+  font-weight: 900; /* 确保图标是solid风格 */
+  padding-right: 5px; /* 在图标和文本之间添加一些空间 */
+}
+.answer-text {
+  color: #04649c; /* 深蓝色 */
+  /* 根据需要添加其他样式，比如 font-size 或 line-height */
+}
