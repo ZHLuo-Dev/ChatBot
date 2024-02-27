@@ -76,7 +76,7 @@ function App() {
         // 封装留言内容
         const messageContent = { text: input.trim(), timestamp: new Date().toISOString() };
         try {
-          const response = await fetch('https://zl-2023-chatbot-b2e471edcf3e.herokuapp.com/', {
+          const response = await fetch('https://zl-2023-chatbot-b2e471edcf3e.herokuapp.com/api/leaveMessage', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
