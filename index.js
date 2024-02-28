@@ -76,9 +76,7 @@ app.post('/api/leaveMessage', async (req, res) => {
   } catch (error) {
     console.error("Failed to save message", error);
     res.status(500).send(); // 服务器内部错误
-  } finally {
-    await client.close(); // 确保关闭 MongoDB 客户端连接
-  }
+  } 
 });
 
 // 示例 API 路由
