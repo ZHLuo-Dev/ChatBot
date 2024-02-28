@@ -105,6 +105,7 @@ function App() {
       } else {
         // 正常发送用户消息
         sendMessage(input.trim(), "user", true);
+        setInput('');
       }
   
       if (!showOptions) {
