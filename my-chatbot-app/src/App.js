@@ -70,13 +70,14 @@ function App() {
   const [input, setInput] = useState('');
   const [showOptions, setShowOptions] = useState(true);
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
   const handleSendClick = async () => {
     if (input.trim()) {
       if (canLeaveMessage) {
         // 封装留言内容
         const messageContent = { text: input.trim(), timestamp: new Date().toISOString() };
         try {
-          const response = await fetch('https://zl-2023-chatbot-b2e471edcf3e.herokuapp.com/api/leaveMessage', {
+          const response = await fetch(`${BACKEND_URL}/api/leaveMessage`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

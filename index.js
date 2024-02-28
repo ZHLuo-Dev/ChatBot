@@ -8,6 +8,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors());
 // 替换 <password> 为实际的数据库用户密码
+app.use(express.json());
 const uri = "mongodb+srv://zlbot:KUN6jGsHSePv8dQ@webbot.emgbmzs.mongodb.net/?retryWrites=true&w=majority&appName=webbot";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -28,6 +29,8 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+
 app.use(express.static(path.join(__dirname, 'my-chatbot-app/build')));
 
 // The "catchall" handler: for any request that doesn't
