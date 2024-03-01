@@ -170,6 +170,7 @@ function App() {
   }}
   placeholder="Type a message..."
 />
+<button onClick={handleSendClick} className="send-button">Send</button>
   </div>
       <footer className="App-footer">
       <a href="https://zl-2023.com" target="_blank" rel="noopener noreferrer">Navigate to game website</a>
